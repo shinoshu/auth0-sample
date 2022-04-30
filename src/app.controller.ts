@@ -1,12 +1,37 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Auth0Service } from './auth0.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly auth0Service: Auth0Service) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('users')
+  async getUsers() {
+    return this.auth0Service.getUsers();
+  }
+
+  @Post('users')
+  async createUser(@Body() user: any) {
+    return this.auth0Service.createUser(user);
+  }
+
+  @Get('organizations')
+  async getOrganizations() {
+    return this.auth0Service.getOrganizations();
+  }
+
+  @Post('organizations')
+  async createOrganization(@Body() organization: any) {
+    return this.auth0Service.createOrganization(organization);
+  }
+
+  @Get('organizations/:id/invitations')
+  async getInvitations(@Param('id') id: string) {
+    return this.auth0Service.getInvitations(id);
+  }
+
+  @Post('organizations/:id/invitations')
+  async createInvitation(@Param('id') id: string, @Body() invitation: any) {
+    return this.auth0Service.createInvitation(id, invitation);
   }
 }
