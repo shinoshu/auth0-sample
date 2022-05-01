@@ -16,6 +16,10 @@ export class Auth0Service {
     });
   }
 
+  async getUser(id: string) {
+    return await this.management.getUser({ id });
+  }
+
   async getUsers() {
     return await this.management.getUsers();
   }
@@ -24,12 +28,32 @@ export class Auth0Service {
     return await this.management.createUser(user);
   }
 
+  async updateUser(id: string, user: any) {
+    return await this.management.updateUser({ id }, user);
+  }
+
+  async deleteUser(id: string) {
+    return await this.management.deleteUser({ id });
+  }
+
+  async getOrganization(id: string) {
+    return await this.management.organizations.getByID({ id });
+  }
+
   async getOrganizations() {
     return await this.management.organizations.getAll();
   }
 
   async createOrganization(organization: any) {
     return await this.management.organizations.create(organization);
+  }
+
+  async updateOrganization(id: string, organization: any) {
+    return await this.management.organizations.update({ id }, organization);
+  }
+
+  async deleteOrganization(id: string) {
+    return await this.management.organizations.delete({ id });
   }
 
   async getInvitations(id: string) {
