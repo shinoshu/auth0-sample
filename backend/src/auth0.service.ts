@@ -36,6 +36,10 @@ export class Auth0Service {
     return await this.management.deleteUser({ id });
   }
 
+  async getUserOrganizations(id: string) {
+    return await (this.management as any).users.getUserOrganizations({ id });
+  }
+
   async getOrganization(id: string) {
     return await this.management.organizations.getByID({ id });
   }

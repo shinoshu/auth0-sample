@@ -41,6 +41,11 @@ export class AppController {
     return this.auth0Service.deleteUser(id);
   }
 
+  @Get('users/:id/organizations')
+  async getUserOrganizations(@Param('id') id: string) {
+    return this.auth0Service.getUserOrganizations(id);
+  }
+
   @Get('organizations/:id')
   async getOrganization(@Param('id') id: string) {
     return this.auth0Service.getOrganization(id);
