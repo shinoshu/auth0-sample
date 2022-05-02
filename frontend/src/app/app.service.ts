@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '@auth0/auth0-angular';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +7,7 @@ import { AuthService } from '@auth0/auth0-angular';
 export class AppService {
   baseURL = 'http://localhost:3000';
 
-  constructor(private http: HttpClient, public auth: AuthService) {}
+  constructor(private http: HttpClient) {}
 
   getUser(id: string) {
     return this.http.get<any>(`${this.baseURL}/users/${id}`);
