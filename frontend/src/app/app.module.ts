@@ -11,7 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth0/auth0-angular';
 
-import * as User from './user/user.reducer';
+import * as User from './user/user-entities.reducer';
 import { JwtInterceptor } from './jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

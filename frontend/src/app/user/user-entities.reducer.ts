@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import { User } from './user.model';
-import * as UserActions from './user.actions';
+import * as Actions from './user-entities.actions';
 
 export const usersFeatureKey = 'users';
 
@@ -18,35 +18,35 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(UserActions.addUser, (state, action) =>
-    adapter.addOne(action.user, state)
-  ),
-  on(UserActions.upsertUser, (state, action) =>
+  // prettier-ignore
+  on(Actions.addUser, (state, action) =>
+    adapter.addOne(action.user, state)),
+  on(Actions.upsertUser, (state, action) =>
     adapter.upsertOne(action.user, state)
   ),
-  on(UserActions.addUsers, (state, action) =>
-    adapter.addMany(action.users, state)
-  ),
-  on(UserActions.upsertUsers, (state, action) =>
+  // prettier-ignore
+  on(Actions.addUsers, (state, action) =>
+    adapter.addMany(action.users, state)),
+  on(Actions.upsertUsers, (state, action) =>
     adapter.upsertMany(action.users, state)
   ),
-  on(UserActions.updateUser, (state, action) =>
+  on(Actions.updateUser, (state, action) =>
     adapter.updateOne(action.user, state)
   ),
-  on(UserActions.updateUsers, (state, action) =>
+  on(Actions.updateUsers, (state, action) =>
     adapter.updateMany(action.users, state)
   ),
-  on(UserActions.deleteUser, (state, action) =>
+  on(Actions.deleteUser, (state, action) =>
     adapter.removeOne(action.id, state)
   ),
-  on(UserActions.deleteUsers, (state, action) =>
+  on(Actions.deleteUsers, (state, action) =>
     adapter.removeMany(action.ids, state)
   ),
-  on(UserActions.loadUsers, (state, action) => {
+  on(Actions.loadUsers, (state, action) => {
     return adapter.setAll(action.users, state);
   }),
   // prettier-ignore
-  on(UserActions.clearUsers, (state) =>
+  on(Actions.clearUsers, (state) =>
     adapter.removeAll(state))
 );
 
