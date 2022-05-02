@@ -3,6 +3,11 @@ import { Update } from '@ngrx/entity';
 
 import { User } from './user.model';
 
+export const loadUser = createAction(
+  '[User/API] Load User',
+  props<{ user: User }>()
+);
+
 export const loadUsers = createAction(
   '[User/API] Load Users',
   props<{ users: User[] }>()
