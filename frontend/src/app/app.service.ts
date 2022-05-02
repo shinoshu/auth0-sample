@@ -21,8 +21,8 @@ export class AppService {
     return this.http.post<any>(`${this.baseURL}/users`, user);
   }
 
-  updateUser(id: string, user: any) {
-    return this.http.put<any>(`${this.baseURL}/users/${id}`, user);
+  updateUser(user: any) {
+    return this.http.put<any>(`${this.baseURL}/users/${user.id}`, user);
   }
 
   deleteUser(id: string) {
