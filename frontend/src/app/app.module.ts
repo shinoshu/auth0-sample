@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth0/auth0-angular';
 
 import * as User from './user/user-entities.reducer';
+import { UserEffects } from './user/user.effects';
 import { JwtInterceptor } from './jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({
       [User.usersFeatureKey]: User.reducer,
     }),
+    EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument(),
     AuthModule.forRoot({
       domain: environment.domain,
