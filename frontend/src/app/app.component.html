@@ -1,10 +1,13 @@
-<div class="container">
-  <button mat-raised-button color="primary" (click)="auth.loginWithRedirect()">
-    ログイン
-  </button>
+<mat-toolbar class="mat-elevation-z2" color="primary">
+  <span>auth0-sample</span>
+</mat-toolbar>
 
-  <ul *ngIf="auth.user$ | async as user">
-    <li>{{ user.name }}</li>
-    <li>{{ user.email }}</li>
-  </ul>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item href="#">ユーザー一覧</a>
+      <a mat-list-item href="#">組織一覧</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content> content </mat-sidenav-content>
+</mat-sidenav-container>

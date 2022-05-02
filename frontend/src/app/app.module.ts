@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthModule } from '@auth0/auth0-angular';
 
 import { JwtInterceptor } from './jwt.interceptor';
@@ -18,6 +21,9 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
     AuthModule.forRoot({
       domain: environment.domain,
       clientId: environment.clientId,
