@@ -16,10 +16,12 @@ import { UserEffects } from './user/user.effects';
 import { JwtInterceptor } from './jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UsersPageComponent } from './users-page/users-page.component';
+import { OrganizationsPageComponent } from './organizations-page/organizations-page.component';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UsersPageComponent, OrganizationsPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
