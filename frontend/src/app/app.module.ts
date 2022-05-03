@@ -5,13 +5,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth0/auth0-angular';
 
-import * as User from './user/user-entities.reducer';
+import * as fromUserEntities from './user/user-entities.reducer';
 import { UserEffects } from './user/user.effects';
 import { JwtInterceptor } from './jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,9 +31,10 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatListModule,
     MatSidenavModule,
+    MatTableModule,
     MatToolbarModule,
     StoreModule.forRoot({
-      [User.usersFeatureKey]: User.reducer,
+      [fromUserEntities.usersFeatureKey]: fromUserEntities.reducer,
     }),
     EffectsModule.forRoot([UserEffects]),
     StoreDevtoolsModule.instrument(),
