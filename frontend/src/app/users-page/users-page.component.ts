@@ -22,6 +22,11 @@ export class UsersPageComponent implements OnInit {
   }
 
   add() {
-    this.dialog.open(UserAddDialogComponent);
+    const dialogRef = this.dialog.open(UserAddDialogComponent);
+    dialogRef.afterClosed().subscribe((user) => {
+      if (user) {
+        this.store.dispatch(UserActions.createUser({ user }));
+      }
+    });
   }
 }

@@ -18,7 +18,10 @@ export class AppService {
   }
 
   createUser(user: any) {
-    return this.http.post<any>(`${this.baseURL}/users`, user);
+    return this.http.post<any>(`${this.baseURL}/users`, {
+      ...user,
+      connection: 'Database',
+    });
   }
 
   updateUser(user: any) {

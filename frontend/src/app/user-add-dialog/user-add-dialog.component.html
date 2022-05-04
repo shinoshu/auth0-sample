@@ -1,18 +1,24 @@
 <p mat-dialog-title>ユーザー追加</p>
 
-<div fxLayout="column" fxLayoutGap="8px">
+<form fxLayout="column" fxLayoutGap="8px" [formGroup]="form">
   <mat-form-field appearance="fill">
     <mat-label>名前</mat-label>
-    <input matInput />
+    <input type="text" matInput formControlName="name" />
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>メールアドレス</mat-label>
-    <input matInput />
+    <input type="email" matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>パスワード</mat-label>
+    <input type="password" matInput formControlName="password" />
   </mat-form-field>
 
   <div fxLayout="row" fxLayoutGap="8px">
     <span fxFlex></span>
-    <button mat-raised-button mat-dialog-close>確定</button>
+    <button mat-raised-button [mat-dialog-close]="form.value">確定</button>
     <button mat-raised-button mat-dialog-close>キャンセル</button>
   </div>
-</div>
+</form>
