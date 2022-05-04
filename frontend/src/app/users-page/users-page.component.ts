@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 
 import * as UserActions from '../user/user.actions';
@@ -12,13 +14,19 @@ import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.compo
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email'];
-  dataSource = this.store.select(selectAll);
+  users$ = this.store.select(selectAll);
+
+  displayedColumns: string[] = ['select', 'id', 'name', 'email'];
+  dataSource!: MatTableDataSource<any>;
+  selection = new SelectionModel<any>(true, []);
 
   constructor(private dialog: MatDialog, private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(UserActions.loadUsers());
+    this.users$.subscribe(
+      (users) => (this.dataSource = new MatTableDataSource(users))
+    );
   }
 
   add() {
@@ -28,5 +36,19 @@ export class UsersPageComponent implements OnInit {
         this.store.dispatch(UserActions.createUser({ user }));
       }
     });
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+    this.selection.select(...this.dataSource.data);
   }
 }
