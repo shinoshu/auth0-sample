@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutGap="8px">
   <span fxFlex></span>
   <button mat-raised-button (click)="add()">追加</button>
-  <button mat-raised-button>削除</button>
+  <button mat-raised-button (click)="delete(selection.selected)">削除</button>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z4">

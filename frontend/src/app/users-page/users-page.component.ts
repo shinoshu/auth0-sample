@@ -38,6 +38,12 @@ export class UsersPageComponent implements OnInit {
     });
   }
 
+  delete(users: any) {
+    users.forEach((user: any) => {
+      this.store.dispatch(UserActions.deleteUser({ id: user.user_id }));
+    });
+  }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;

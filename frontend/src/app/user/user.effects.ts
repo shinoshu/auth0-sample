@@ -58,7 +58,7 @@ export class UserEffects {
       switchMap((action) =>
         this.appService
           .deleteUser(action.id)
-          .pipe(map(({ id }) => UserEntitiesActions.deleteUser({ id })))
+          .pipe(map(() => UserEntitiesActions.deleteUser({ id: action.id })))
       )
     )
   );
