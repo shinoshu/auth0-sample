@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 
 import * as UserActions from '../user/user.actions';
-import { selectAll } from '../user/user.selectors';
+import * as UserEntitiesSelectors from '../user/user-entities.selectors';
 import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.compo
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit {
-  users$ = this.store.select(selectAll);
+  users$ = this.store.select(UserEntitiesSelectors.selectAll);
 
   displayedColumns: string[] = ['select', 'id', 'name', 'email'];
   dataSource!: MatTableDataSource<any>;
