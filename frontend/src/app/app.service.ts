@@ -49,12 +49,22 @@ export class AppService {
   }
 
   updateOrganization(id: string, organization: any) {
-    // prettier-ignore
-    return this.http.post<any>(`${this.baseURL}/organizations/${id}`, organization);
+    return this.http.post<any>(
+      `${this.baseURL}/organizations/${id}`,
+      organization
+    );
   }
 
   deleteOrganization(id: string) {
     return this.http.delete<any>(`${this.baseURL}/organizations/${id}`);
+  }
+
+  getOrganizationUsers(id: string) {
+    return this.http.get<any>(`${this.baseURL}/organizations/${id}/members`);
+  }
+
+  deleteOrganizationUsers(id: string) {
+    return this.http.delete<any>(`${this.baseURL}/organizations/${id}/members`);
   }
 
   getInvitations(id: string) {
