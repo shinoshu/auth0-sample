@@ -1,5 +1,7 @@
 <mat-toolbar class="mat-elevation-z4" color="primary">
   <span>auth0-sample</span>
+  <span fxFlex></span>
+  <img [src]="user?.picture" *ngIf="user$ | async as user" />
 </mat-toolbar>
 
 <mat-sidenav-container>
