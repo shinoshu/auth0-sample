@@ -21,6 +21,8 @@ import { AuthModule } from '@auth0/auth0-angular';
 
 import * as fromUserEntities from './user/user-entities.reducer';
 import { UserEffects } from './user/user.effects';
+import * as fromOrganizationEntities from './organization/organization-entities.reducer';
+import { OrganizationEffects } from './organization/organization.effects';
 import { JwtInterceptor } from './jwt.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,8 +57,10 @@ import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.compon
     MatToolbarModule,
     StoreModule.forRoot({
       [fromUserEntities.usersFeatureKey]: fromUserEntities.reducer,
+      // prettier-ignore
+      [fromOrganizationEntities.OrganizationesFeatureKey]: fromOrganizationEntities.reducer,
     }),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, OrganizationEffects]),
     StoreDevtoolsModule.instrument(),
     AuthModule.forRoot({
       domain: environment.domain,
