@@ -14,7 +14,7 @@ import * as OrganizationEntitiesSelectors from '../organization/organization-ent
 export class OrganizationsPageComponent implements OnInit {
   organizations$ = this.store.select(OrganizationEntitiesSelectors.selectAll);
 
-  displayedColumns: string[] = ['select', 'id', 'name'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'members'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
 
