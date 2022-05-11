@@ -30,6 +30,7 @@ import { UsersPageComponent } from './users-page/users-page.component';
 import { OrganizationsPageComponent } from './organizations-page/organizations-page.component';
 import { environment } from '../environments/environment';
 import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
+import { OrganizationAddDialogComponent } from './organization-add-dialog/organization-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.compon
     UsersPageComponent,
     OrganizationsPageComponent,
     UserAddDialogComponent,
+    OrganizationAddDialogComponent,
   ],
   imports: [
     BrowserModule,

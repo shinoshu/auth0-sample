@@ -1,0 +1,14 @@
+<p mat-dialog-title>組織追加</p>
+
+<form fxLayout="column" fxLayoutGap="8px" [formGroup]="form">
+  <mat-form-field appearance="fill">
+    <mat-label>組織名</mat-label>
+    <input type="text" matInput formControlName="name" />
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutGap="8px">
+    <span fxFlex></span>
+    <button mat-raised-button [mat-dialog-close]="form.value">確定</button>
+    <button mat-raised-button mat-dialog-close>キャンセル</button>
+  </div>
+</form>
