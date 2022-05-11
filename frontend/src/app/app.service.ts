@@ -48,9 +48,9 @@ export class AppService {
     return this.http.post<any>(`${this.baseURL}/organizations`, organization);
   }
 
-  updateOrganization(id: string, organization: any) {
+  updateOrganization(organization: any) {
     return this.http.post<any>(
-      `${this.baseURL}/organizations/${id}`,
+      `${this.baseURL}/organizations/${organization.id}`,
       organization
     );
   }

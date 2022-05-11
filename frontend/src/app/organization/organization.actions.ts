@@ -48,7 +48,7 @@ export const createOrganizationFailure = createAction(
 
 export const updateOrganization = createAction(
   '[Organization] Update Organization',
-  props<{ Organization: Organization }>()
+  props<{ organization: Organization }>()
 );
 
 export const updateOrganizationSuccess = createAction(
