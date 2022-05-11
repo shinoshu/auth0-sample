@@ -25,18 +25,27 @@
   </ng-container>
 
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <th mat-header-cell *matHeaderCellDef>ユーザー ID</th>
     <td mat-cell *matCellDef="let element">{{ element.user_id }}</td>
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <th mat-header-cell *matHeaderCellDef>名前</th>
     <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
   <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <th mat-header-cell *matHeaderCellDef>メールアドレス</th>
     <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="organizations">
+    <th mat-header-cell *matHeaderCellDef>組織</th>
+    <td mat-cell *matCellDef="let element">
+      <button class="mat-elevation-z0" mat-mini-fab color="">
+        <mat-icon>apartment</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

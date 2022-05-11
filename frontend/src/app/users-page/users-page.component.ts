@@ -16,7 +16,13 @@ import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.compo
 export class UsersPageComponent implements OnInit {
   users$ = this.store.select(UserEntitiesSelectors.selectAll);
 
-  displayedColumns: string[] = ['select', 'id', 'name', 'email'];
+  displayedColumns: string[] = [
+    'select',
+    'id',
+    'name',
+    'email',
+    'organizations',
+  ];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<any>(true, []);
 
