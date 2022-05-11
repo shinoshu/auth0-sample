@@ -37,7 +37,12 @@
   <ng-container matColumnDef="members">
     <th mat-header-cell *matHeaderCellDef>メンバー</th>
     <td mat-cell *matCellDef="let element">
-      <button class="mat-elevation-z0" mat-mini-fab color="">
+      <button
+        class="mat-elevation-z0"
+        mat-mini-fab
+        color=""
+        (click)="openDialog()"
+      >
         <mat-icon>group</mat-icon>
       </button>
     </td>

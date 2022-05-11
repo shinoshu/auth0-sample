@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import * as UserActions from '../user/user.actions';
 import * as UserEntitiesSelectors from '../user/user-entities.selectors';
 import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.component';
+import { UserOrganizationsDialogComponent } from '../user-organizations-dialog/user-organizations-dialog.component';
 
 @Component({
   selector: 'app-users-page',
@@ -48,6 +49,10 @@ export class UsersPageComponent implements OnInit {
     users.forEach((user: any) => {
       this.store.dispatch(UserActions.deleteUser({ id: user.user_id }));
     });
+  }
+
+  openDialog() {
+    this.dialog.open(UserOrganizationsDialogComponent);
   }
 
   isAllSelected() {

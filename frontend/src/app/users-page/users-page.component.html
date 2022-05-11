@@ -42,7 +42,12 @@
   <ng-container matColumnDef="organizations">
     <th mat-header-cell *matHeaderCellDef>組織</th>
     <td mat-cell *matCellDef="let element">
-      <button class="mat-elevation-z0" mat-mini-fab color="">
+      <button
+        class="mat-elevation-z0"
+        mat-mini-fab
+        color=""
+        (click)="openDialog()"
+      >
         <mat-icon>apartment</mat-icon>
       </button>
     </td>

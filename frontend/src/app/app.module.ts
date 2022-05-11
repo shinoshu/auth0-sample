@@ -31,6 +31,8 @@ import { OrganizationsPageComponent } from './organizations-page/organizations-p
 import { environment } from '../environments/environment';
 import { UserAddDialogComponent } from './user-add-dialog/user-add-dialog.component';
 import { OrganizationAddDialogComponent } from './organization-add-dialog/organization-add-dialog.component';
+import { UserOrganizationsDialogComponent } from './user-organizations-dialog/user-organizations-dialog.component';
+import { OrganizationUsersDialogComponent } from './organization-users-dialog/organization-users-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { OrganizationAddDialogComponent } from './organization-add-dialog/organi
     OrganizationsPageComponent,
     UserAddDialogComponent,
     OrganizationAddDialogComponent,
+    UserOrganizationsDialogComponent,
+    OrganizationUsersDialogComponent,
   ],
   imports: [
     BrowserModule,

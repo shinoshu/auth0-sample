@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import * as OrganizationActions from '../organization/organization.actions';
 import * as OrganizationEntitiesSelectors from '../organization/organization-entities.selectors';
 import { OrganizationAddDialogComponent } from '../organization-add-dialog/organization-add-dialog.component';
+import { OrganizationUsersDialogComponent } from '../organization-users-dialog/organization-users-dialog.component';
 
 @Component({
   selector: 'app-organizations-page',
@@ -47,6 +48,10 @@ export class OrganizationsPageComponent implements OnInit {
         OrganizationActions.deleteOrganization({ id: organization.id })
       );
     });
+  }
+
+  openDialog() {
+    this.dialog.open(OrganizationUsersDialogComponent);
   }
 
   isAllSelected() {
