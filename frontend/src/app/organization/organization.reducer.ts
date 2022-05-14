@@ -20,5 +20,5 @@ export const reducer = createReducer(
   }))
 );
 
-export const selectSelectedorganizationId = (state: State) =>
+export const selectSelectedOrganizationId = (state: State) =>
   state.selectedOrganizationId;

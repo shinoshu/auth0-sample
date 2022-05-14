@@ -1,1 +1,8 @@
-<p>{{data | json}}</p>
+<mat-list>
+  <div mat-subheader>所属組織</div>
+  <mat-list-item *ngFor="let organization of data.organizations">
+    <mat-icon mat-list-icon>apartment</mat-icon>
+    <div mat-line>{{ organization.name }}</div>
+    <div mat-line>{{ organization.id }}</div>
+  </mat-list-item>
+</mat-list>

@@ -19,6 +19,9 @@ export class OrganizationsPageComponent implements OnInit {
   organizations$ = this.store.select(
     OrganizationSelectors.selectAllOrganizations
   );
+  selectedOrganization$ = this.store.select(
+    OrganizationSelectors.selectCurrentOrganization
+  );
 
   displayedColumns: string[] = ['select', 'id', 'name', 'members'];
   dataSource!: MatTableDataSource<any>;
@@ -54,18 +57,16 @@ export class OrganizationsPageComponent implements OnInit {
     });
   }
 
+  // 実装中
   openDialog(id: string) {
-    this.store.dispatch(OrganizationActions.loadOrganizationUsers({ id }));
-
-    const organization$ = this.store
-      .select(OrganizationSelectors.selectCurrentOrganization)
-      .pipe(first());
-
-    organization$.subscribe((organization) => {
-      this.dialog.open(OrganizationUsersDialogComponent, {
-        data: organization,
-      });
+    this.selectedOrganization$.pipe(first()).subscribe((organization) => {
+      organization &&
+        this.dialog.open(OrganizationUsersDialogComponent, {
+          data: organization,
+        });
     });
+
+    this.store.dispatch(OrganizationActions.loadOrganizationUsers({ id }));
   }
 
   isAllSelected() {

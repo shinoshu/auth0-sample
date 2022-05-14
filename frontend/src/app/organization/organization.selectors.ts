@@ -26,7 +26,7 @@ export const selectAllOrganizations = createSelector(
 
 export const selectCurrentOrganizationId = createSelector(
   selectOrganizationState,
-  fromOrganization.selectSelectedorganizationId
+  fromOrganization.selectSelectedOrganizationId
 );
 
 export const selectCurrentOrganization = createSelector(

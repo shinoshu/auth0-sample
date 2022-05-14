@@ -17,6 +17,7 @@ import { UserOrganizationsDialogComponent } from '../user-organizations-dialog/u
 })
 export class UsersPageComponent implements OnInit {
   users$ = this.store.select(UserSelectors.selectAllUsers);
+  selectedUser$ = this.store.select(UserSelectors.selectCurrentUser);
 
   displayedColumns: string[] = [
     'select',
@@ -53,18 +54,16 @@ export class UsersPageComponent implements OnInit {
     });
   }
 
+  // 実装中
   openDialog(id: string) {
-    this.store.dispatch(UserActions.loadUserOrganizations({ id }));
-
-    const user$ = this.store
-      .select(UserSelectors.selectCurrentUser)
-      .pipe(first());
-
-    user$.subscribe((user) => {
-      this.dialog.open(UserOrganizationsDialogComponent, {
-        data: user,
-      });
+    this.selectedUser$.pipe(first()).subscribe((user) => {
+      user &&
+        this.dialog.open(UserOrganizationsDialogComponent, {
+          data: user,
+        });
     });
+
+    this.store.dispatch(UserActions.loadUserOrganizations({ id }));
   }
 
   isAllSelected() {

@@ -1,1 +1,8 @@
-<p>{{data | json}}</p>
+<mat-list>
+  <div mat-subheader>所属メンバー</div>
+  <mat-list-item *ngFor="let user of data.users">
+    <mat-icon mat-list-icon>person</mat-icon>
+    <div mat-line>{{ user.name }}</div>
+    <div mat-line>{{ user.user_id }}</div>
+  </mat-list-item>
+</mat-list>
