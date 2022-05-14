@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
 
 import * as UserActions from './user.actions';
 import * as UserEntitiesActions from './user-entities.actions';

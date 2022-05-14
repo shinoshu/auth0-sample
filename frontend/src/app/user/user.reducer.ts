@@ -19,3 +19,5 @@ export const reducer = createReducer(
     selectedUserId: action.id,
   }))
 );
+
+export const selectSelectedUserId = (state: State) => state.selectedUserId;

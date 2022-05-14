@@ -3,9 +3,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { first } from 'rxjs';
 
 import * as UserActions from '../user/user.actions';
-import * as UserEntitiesSelectors from '../user/user-entities.selectors';
+import * as UserSelectors from '../user/user.selectors';
 import { UserAddDialogComponent } from '../user-add-dialog/user-add-dialog.component';
 import { UserOrganizationsDialogComponent } from '../user-organizations-dialog/user-organizations-dialog.component';
 
@@ -15,7 +16,7 @@ import { UserOrganizationsDialogComponent } from '../user-organizations-dialog/u
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit {
-  users$ = this.store.select(UserEntitiesSelectors.selectAllUsers);
+  users$ = this.store.select(UserSelectors.selectAllUsers);
 
   displayedColumns: string[] = [
     'select',
@@ -52,7 +53,17 @@ export class UsersPageComponent implements OnInit {
   }
 
   openDialog(id: string) {
-    this.dialog.open(UserOrganizationsDialogComponent);
+    this.store.dispatch(UserActions.loadUserOrganizations({ id }));
+
+    const user$ = this.store
+      .select(UserSelectors.selectCurrentUser)
+      .pipe(first());
+
+    user$.subscribe((user) => {
+      this.dialog.open(UserOrganizationsDialogComponent, {
+        data: user,
+      });
+    });
   }
 
   isAllSelected() {

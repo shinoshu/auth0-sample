@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthModule } from '@auth0/auth0-angular';
 
+import * as fromUser from './user/user.reducer';
 import * as fromUserEntities from './user/user-entities.reducer';
 import { UserEffects } from './user/user.effects';
 import * as fromOrganizationEntities from './organization/organization-entities.reducer';
@@ -62,6 +63,7 @@ import { OrganizationUsersDialogComponent } from './organization-users-dialog/or
     MatTableModule,
     MatToolbarModule,
     StoreModule.forRoot({
+      [fromUser.userFeatureKey]: fromUser.reducer,
       [fromUserEntities.usersFeatureKey]: fromUserEntities.reducer,
       // prettier-ignore
       [fromOrganizationEntities.OrganizationesFeatureKey]: fromOrganizationEntities.reducer,
