@@ -3,9 +3,10 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
+import { first } from 'rxjs';
 
 import * as OrganizationActions from '../organization/organization.actions';
-import * as OrganizationEntitiesSelectors from '../organization/organization-entities.selectors';
+import * as OrganizationSelectors from '../organization/organization.selectors';
 import { OrganizationAddDialogComponent } from '../organization-add-dialog/organization-add-dialog.component';
 import { OrganizationUsersDialogComponent } from '../organization-users-dialog/organization-users-dialog.component';
 
@@ -15,7 +16,9 @@ import { OrganizationUsersDialogComponent } from '../organization-users-dialog/o
   styleUrls: ['./organizations-page.component.scss'],
 })
 export class OrganizationsPageComponent implements OnInit {
-  organizations$ = this.store.select(OrganizationEntitiesSelectors.selectAll);
+  organizations$ = this.store.select(
+    OrganizationSelectors.selectAllOrganizations
+  );
 
   displayedColumns: string[] = ['select', 'id', 'name', 'members'];
   dataSource!: MatTableDataSource<any>;
@@ -51,8 +54,18 @@ export class OrganizationsPageComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    this.dialog.open(OrganizationUsersDialogComponent);
+  openDialog(id: string) {
+    this.store.dispatch(OrganizationActions.loadOrganizationUsers({ id }));
+
+    const organization$ = this.store
+      .select(OrganizationSelectors.selectCurrentOrganization)
+      .pipe(first());
+
+    organization$.subscribe((organization) => {
+      this.dialog.open(OrganizationUsersDialogComponent, {
+        data: organization,
+      });
+    });
   }
 
   isAllSelected() {

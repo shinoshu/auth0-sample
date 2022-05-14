@@ -70,4 +70,8 @@ export class Auth0Service {
       invitation,
     );
   }
+
+  async getMembers(id: string) {
+    return await this.management.organizations.getMembers({ id });
+  }
 }

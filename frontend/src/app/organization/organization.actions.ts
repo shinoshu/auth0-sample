@@ -75,3 +75,18 @@ export const deleteOrganizationFailure = createAction(
   '[Organization] Delete Organization Failure',
   props<{ error: any }>()
 );
+
+export const loadOrganizationUsers = createAction(
+  '[User] Load User Organization Users',
+  props<{ id: string }>()
+);
+
+export const loadOrganizationUsersSuccess = createAction(
+  '[User] Load User Organizations Users Success',
+  props<{ data: any }>()
+);
+
+export const loadOrganizationUsersFailure = createAction(
+  '[User] Load User Organizations Users Failure',
+  props<{ error: any }>()
+);

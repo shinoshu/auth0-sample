@@ -80,4 +80,9 @@ export class AppController {
   async createInvitation(@Param('id') id: string, @Body() invitation: any) {
     return this.auth0Service.createInvitation(id, invitation);
   }
+
+  @Get('organizations/:id/members')
+  async getOrganizationUser(@Param('id') id: string) {
+    return this.auth0Service.getMembers(id);
+  }
 }

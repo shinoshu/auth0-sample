@@ -3,7 +3,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Organization } from './organization.model';
 import * as OrganizationActions from './organization-entities.actions';
 
-export const OrganizationesFeatureKey = 'Organizationes';
+export const organizationesFeatureKey = 'organizationes';
 
 export interface State extends EntityState<Organization> {
   // additional entities state properties
