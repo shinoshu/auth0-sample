@@ -7,7 +7,7 @@ export const selectUserEntitiesState =
     fromUserEntities.usersFeatureKey
   );
 
-export const selectAll = createSelector(
+export const selectAllUsers = createSelector(
   selectUserEntitiesState,
   fromUserEntities.selectAll
 );

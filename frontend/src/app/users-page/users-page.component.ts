@@ -15,7 +15,7 @@ import { UserOrganizationsDialogComponent } from '../user-organizations-dialog/u
   styleUrls: ['./users-page.component.scss'],
 })
 export class UsersPageComponent implements OnInit {
-  users$ = this.store.select(UserEntitiesSelectors.selectAll);
+  users$ = this.store.select(UserEntitiesSelectors.selectAllUsers);
 
   displayedColumns: string[] = [
     'select',
@@ -51,7 +51,7 @@ export class UsersPageComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialog(id: string) {
     this.dialog.open(UserOrganizationsDialogComponent);
   }
 
