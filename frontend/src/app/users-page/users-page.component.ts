@@ -47,6 +47,7 @@ export class UsersPageComponent implements OnInit {
   }
 
   delete(users: any) {
+    // TODO: deleteUser -> deleteUsers
     users.forEach((user: any) => {
       this.store.dispatch(UserActions.deleteUser({ id: user.user_id }));
     });

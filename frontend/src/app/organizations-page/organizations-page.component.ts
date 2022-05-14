@@ -43,6 +43,7 @@ export class OrganizationsPageComponent implements OnInit {
   }
 
   delete(organizations: any) {
+    // TODO: deleteOrganization -> deleteOrganizations
     organizations.forEach((organization: any) => {
       this.store.dispatch(
         OrganizationActions.deleteOrganization({ id: organization.id })
