@@ -63,5 +63,22 @@ export class UserEffects {
     )
   );
 
+  loadUserOrganizations$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.loadUserOrganizations),
+      switchMap((action) =>
+        this.appService.getUserOrganizations(action.id).pipe(
+          map((organizations) => ({
+            user: {
+              id: action.id,
+              changes: { organizations },
+            },
+          })),
+          map((user) => UserEntitiesActions.updateUser(user))
+        )
+      )
+    )
+  );
+
   constructor(private actions$: Actions, private appService: AppService) {}
 }
